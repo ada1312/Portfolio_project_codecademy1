@@ -1,3 +1,6 @@
+#While taking Machine learning course on CodeCademy we need to make three portfolio projects.
+#This is the first project making simple analyzations from health insurance data.
+
 #Packages 
 import csv
 import pandas as pd
@@ -109,5 +112,17 @@ print("Total insurance cost for all 1064 non-smokers is: " + str(cost_non) + "."
 print("Average insurance cost for non-smokers is: " + str(avg_non) + ".")
 print("Average insurance cost for smokers is: " + str(avg_smok) + ". And this is: " + str(how_many_more) + " higher than for non-smokers.")
 
+#Are smokers havier than non-smokers
+smok_bmi = list(zip(bmi, smoker))
 
+non_smoker_bmi = [bmi for bmi, smoker_stat in smok_bmi if smoker_stat == "no"] 
+smoker_bmi = [bmi for bmi, smoker_stat in smok_bmi if smoker_stat == "yes"] 
+
+avg_bmi_smoker = numpy.average(non_smoker_bmi)
+avg_bmi_smoker = round(avg_bmi_smoker, 2)
+avg_bmi_nonsmoker = numpy.average(smoker_bmi)
+avg_bmi_nonsmoker = round(avg_bmi_nonsmoker)
+
+print("Non-smokers have average BMI: " + str(avg_bmi_smoker))
+print("Smokers have average BMI: " + str(avg_bmi_nonsmoker))
 
