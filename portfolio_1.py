@@ -83,3 +83,31 @@ else:
     print("No person in the list has kids")
 
 
+#difference in cost between smokers and non-smokers
+
+smokstat_price = list(zip(charges, smoker))
+
+non_smoker_cost = [cost for cost, smoker_status in smokstat_price if smoker_status == "no" ]
+smoker_cost = [cost for cost, smoker_status in smokstat_price if smoker_status == "yes"]
+
+cost_non = round(sum(non_smoker_cost),2)
+cost_yes = round(sum(smoker_cost), 2)
+
+cost_dif = sum(smoker_cost) - sum(non_smoker_cost)
+cost_dif = round(cost_dif, 2)
+
+
+avg_non = numpy.average(non_smoker_cost)
+avg_non = round(avg_non, 2)
+avg_smok = numpy.average(smoker_cost)
+avg_smok = round(avg_smok, 2)
+how_many_more = round(avg_smok/avg_non, 2)
+
+print("The difference in insurance cost between smokers and non-smokers is: " + str(cost_dif) + " (smokers have lower sum of costs)." + " But we need to remember that in our dataset is around 800 less smokers than non-smokers.")
+print("Total insurance cost for all 274 smokers is: " + str(cost_yes) + ".")
+print("Total insurance cost for all 1064 non-smokers is: " + str(cost_non) + ".")
+print("Average insurance cost for non-smokers is: " + str(avg_non) + ".")
+print("Average insurance cost for smokers is: " + str(avg_smok) + ". And this is: " + str(how_many_more) + " higher than for non-smokers.")
+
+
+
