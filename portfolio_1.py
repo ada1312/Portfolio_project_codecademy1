@@ -36,6 +36,7 @@ print("Average age of a patient is: " + str(average_age) + " years.")
 
 #Where does individuals comes from 
 def individuals_from(a):
+    #save it to the dictionary
     location = {}
     for j in a:
         if j in location:
@@ -43,7 +44,7 @@ def individuals_from(a):
         else:
             location[j] = 1
     return location
-
+#check the results
 num_location = individuals_from(region)
 print(num_location)
 
@@ -87,25 +88,27 @@ else:
 
 
 #difference in cost between smokers and non-smokers
-
+#zip lists
 smokstat_price = list(zip(charges, smoker))
-
+#get the costs for both group
 non_smoker_cost = [cost for cost, smoker_status in smokstat_price if smoker_status == "no" ]
 smoker_cost = [cost for cost, smoker_status in smokstat_price if smoker_status == "yes"]
 
 cost_non = round(sum(non_smoker_cost),2)
 cost_yes = round(sum(smoker_cost), 2)
 
+#difference calc
 cost_dif = sum(smoker_cost) - sum(non_smoker_cost)
 cost_dif = round(cost_dif, 2)
 
-
+#average calc
 avg_non = numpy.average(non_smoker_cost)
 avg_non = round(avg_non, 2)
 avg_smok = numpy.average(smoker_cost)
 avg_smok = round(avg_smok, 2)
 how_many_more = round(avg_smok/avg_non, 2)
 
+#print results out
 print("The difference in insurance cost between smokers and non-smokers is: " + str(cost_dif) + " (smokers have lower sum of costs)." + " But we need to remember that in our dataset is around 800 less smokers than non-smokers.")
 print("Total insurance cost for all 274 smokers is: " + str(cost_yes) + ".")
 print("Total insurance cost for all 1064 non-smokers is: " + str(cost_non) + ".")
@@ -114,15 +117,17 @@ print("Average insurance cost for smokers is: " + str(avg_smok) + ". And this is
 
 #Are smokers havier than non-smokers
 smok_bmi = list(zip(bmi, smoker))
-
+#split bmis into group
 non_smoker_bmi = [bmi for bmi, smoker_stat in smok_bmi if smoker_stat == "no"] 
 smoker_bmi = [bmi for bmi, smoker_stat in smok_bmi if smoker_stat == "yes"] 
 
+#calculating average bmi for both groups
 avg_bmi_smoker = numpy.average(non_smoker_bmi)
 avg_bmi_smoker = round(avg_bmi_smoker, 2)
 avg_bmi_nonsmoker = numpy.average(smoker_bmi)
 avg_bmi_nonsmoker = round(avg_bmi_nonsmoker)
 
+#printing out
 print("Non-smokers have average BMI: " + str(avg_bmi_smoker))
 print("Smokers have average BMI: " + str(avg_bmi_nonsmoker))
 
